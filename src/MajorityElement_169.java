@@ -1,40 +1,21 @@
+import java.util.HashMap;
+
 public class MajorityElement_169 {
-
     public static void main(String[] args) {
-        MajorityElement_169 obj = new MajorityElement_169();
-
-        // Test case
-        int[] nums = {2, 2, 1, 1, 1, 2, 2};
-        int result = obj.majorityElement_169(nums);
-
-        System.out.println("Majority Element: " + result);
-    }
-
-    public int majorityElement_169(int[] nums) {
-        int candidate = nums[0];
-        int count = 1;
-        for (int i = 1; i < nums.length; i++) {
-            if (nums[i] == candidate) {
-                count++;
+        int[] nums = {1, 3, 2, 5, 1, 3, 1, 5, 1,};
+        int n = nums.length;
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for (int num : nums) {
+            if (map.containsKey(num)) {
+                map.put(num, map.get(num) + 1);
             } else {
-                count--;
-            }
-
-            if (count == 0) {
-                candidate = nums[i];
-                count = 1;
+                map.put(num, 1);
             }
         }
-        count = 0;
-        for (int i : nums) {
-            if (i == candidate) {
-                count++;
+        for (int key : map.keySet()) {
+            if (map.get(key) > n / 3) {
+                System.out.println(key);
             }
-        }
-        if (count > nums.length / 2) {
-            return candidate;
-        } else {
-            return -1;
         }
     }
 }
