@@ -1,5 +1,6 @@
 public class RotateImage_48 {
 
+    //adding comment
     public void rotate(int[][] matrix) {
         int n  = matrix.length;
         int updated[][] = new int[n][n];
